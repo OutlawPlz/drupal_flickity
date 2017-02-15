@@ -1,0 +1,16 @@
+flickity.flickity.*:
+  type: config_entity
+  label: 'Flickity configuration'
+  mapping:
+    id:
+      type: string
+      label: 'Machine-readable name'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string
+      label: 'UUID'
+    options:
+      type: text
+      label: 'Options'

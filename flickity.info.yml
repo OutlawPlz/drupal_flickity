@@ -1,4 +1,4 @@
-name: Module name
+name: Flickity
 type: module
-description: 'A description of what your module does.'
+description: 'Provides Flickity library integration for Drupal.'
 core: 8.x

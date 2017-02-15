@@ -1,0 +1,49 @@
+entity.flickity.canonical:
+  path: '/admin/config/user-interface/flickity/{flickity}'
+  defaults:
+    _entity_form: 'flickity.edit'
+    _title: 'Edit configuration'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.flickity.add_form:
+  path: '/admin/config/user-interface/flickity/add'
+  defaults:
+    _entity_form: 'flickity.add'
+    _title: 'Add configuration'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.flickity.edit_form:
+  path: '/admin/config/user-interface/flickity/{flickity}/edit'
+  defaults:
+    _entity_form: 'flickity.edit'
+    _title: 'Edit configuration'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.flickity.delete_form:
+  path: '/admin/config/user-interface/flickity/{flickity}/delete'
+  defaults:
+    _entity_form: 'flickity.delete'
+    _title: 'Delete configuration'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'
+
+entity.flickity.collection:
+  path: '/admin/config/user-interface/flickity'
+  defaults:
+    _entity_list: 'flickity'
+    _title: 'Droppy configurations'
+  options:
+    _admin_route: TRUE
+  requirements:
+    _permission: 'administer site configuration'

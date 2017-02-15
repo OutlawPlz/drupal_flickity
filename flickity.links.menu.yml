@@ -1,0 +1,5 @@
+flickity.admin_config_ui.collection:
+  title: Flickity
+  route_name: entity.flickity.collection
+  description: 'Add and modify Flickity configurations.'
+  parent: system.admin_config_ui

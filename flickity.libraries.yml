@@ -1,0 +1,15 @@
+flickity:
+  remote: https://github.com/metafizzy/flickity
+  version: 2.0.5
+  license:
+    name: GPL-3.0
+    url: http://flickity.metafizzy.co/license.html
+    gpl-compatible: true
+  css:
+    component:
+      vendor/flickity/dist/flickity.min.css: { minified: true }
+  js:
+    vendor/flickity/dist/flickity.pkgd.min.js: { minified: true }
+    js/flickityInit.js: {}
+  dependencies:
+    - core/drupalSettings

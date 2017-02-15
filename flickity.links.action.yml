@@ -1,0 +1,5 @@
+entity.flickity.add_form:
+  route_name: 'entity.flickity.add_form'
+  title: 'Add configuration'
+  appears_on:
+    - entity.flickity.collection
