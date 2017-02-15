@@ -1,0 +1,14 @@
+{
+  "name": "outlawplz/flickity",
+  "description": "Provides Flickity library integration for Drupal.",
+  "type": "drupal-module",
+  "license": "GPL-3.0",
+  "authors": [
+    {
+      "name": "Matteo Palazzo",
+      "email": "outlaw.plz@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {}
+}
