@@ -12,5 +12,18 @@ flickity.flickity.*:
       type: string
       label: 'UUID'
     options:
-      type: text
+      type: mapping
       label: 'Options'
+      mapping:
+        cellSelector:
+          type: string
+          label: 'Cell selector'
+        initialIndex:
+          type: integer
+          label: 'Initial index'
+        cellAlign:
+          type: string
+          label: 'Cell align'
+        advanced:
+          type: text
+          label: 'Advanced options'

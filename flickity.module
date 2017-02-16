@@ -4,3 +4,22 @@
 * @file
 * Provides Flickity library integration for Drupal.
 */
+
+/**
+ * Implements hook_theme().
+ */
+function flickity_theme($existing, $type, $theme, $path) {
+
+  return array(
+    'flickity' => array(
+      'render element' => 'element'
+    )
+  );
+}
+
+function template_preprocess_flickity(&$variables) {
+
+  // Flickity formatter is a clone of the default field formatter. That's why
+  // we're using the template_preprocess_field() function to set $variables.
+  template_preprocess_field($variables, NULL);
+}

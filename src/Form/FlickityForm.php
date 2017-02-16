@@ -29,7 +29,7 @@ class FlickityForm extends EntityForm {
 
     /** @var \Drupal\flickity\Entity\FlickityInterface $entity */
     $entity = $this->entity;
-    // $options = $entity->get('options');
+    $options = $entity->getOptions();
     $form = parent::form($form, $form_state);
 
     $form['label'] = array(
@@ -53,12 +53,57 @@ class FlickityForm extends EntityForm {
       '#description' => $this->t('')
     );
 
-    $form['options'] = array(
-      '#type' => 'textarea',
-      '#title' => $this->t('Option'),
-      '#default_value' => $entity->get('options'),
-      '#description' => t('Options in Yaml format.'),
+    $form['setup'] = array(
+      '#type' => 'details',
+      '#title' => $this->t('Setup'),
+      '#open' => TRUE
+    );
+
+    $form['setup']['cell_selector'] = array(
+      '#type' => 'textfield',
+      '#title' => $this->t('Cell selector'),
+      '#default_value' => $options['cellSelector'],
+      '#description' => $this->t('Specify selector for cell elements. This is useful if you have other elements in your carousel elements that are not cells.'),
       '#required' => TRUE
+    );
+
+    $form['setup']['initial_index'] = array(
+      '#type' => 'number',
+      '#title' => $this->t('Initial index'),
+      '#default_value' => $options['initialIndex'],
+      '#min' => 0,
+      '#description' => $this->t('Zero-based index of the initial selected cell.')
+    );
+
+    $form['cell_position'] = array(
+      '#type' => 'details',
+      '#title' => $this->t('Cell position'),
+      '#open' => TRUE
+    );
+
+    $form['cell_position']['cell_align'] = array(
+      '#type' => 'select',
+      '#title' => $this->t('Cell align'),
+      '#default_value' => $options['cellAlign'],
+      '#description' => $this->t('Align cells within the carousel element.'),
+      '#options' => array(
+        'left' => $this->t('Left'),
+        'center' => $this->t('Center'),
+        'right' => $this->t('Right')
+      ),
+      '#empty_value' => ''
+    );
+
+    $form['advanced_options'] = array(
+      '#type' => 'details',
+      '#title' => $this->t('Advanced options')
+    );
+
+    $form['advanced_options']['advanced'] = array(
+      '#type' => 'textarea',
+      '#title' => $this->t('Advanced'),
+      '#default_value' => $options['advanced'],
+      '#description' => t('Options in Yaml format.')
     );
 
     return $form;
@@ -78,6 +123,14 @@ class FlickityForm extends EntityForm {
 
     /** @var $entity \Drupal\flickity\Entity\FlickityInterface */
     $entity = $this->entity;
+
+    $entity->set('options', array(
+      'cellSelector' => $form_state->getValue('cell_selector'),
+      'initialIndex' => $form_state->getValue('initial_index'),
+      'cellAlign' => $form_state->getValue('cell_align'),
+      'advanced' => $form_state->getValue('advanced')
+    ));
+
     $status = parent::save($form, $form_state);
     $replacement = array(
       '@label' => $entity->get('label')
