@@ -86,7 +86,7 @@ class Flickity extends ConfigEntityBase implements FlickityInterface {
     $options = $this->options;
 
     if(!empty($options['advanced'])) {
-      array_merge($options, Yaml::decode($options['advanced']));
+      $options = array_merge($options, Yaml::decode($options['advanced']));
       unset($options['advanced']);
     }
 

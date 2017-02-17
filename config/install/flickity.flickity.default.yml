@@ -4,7 +4,16 @@ dependencies: {  }
 id: default
 label: Default
 options:
-  cellSelector: '.carousel-cell'
+  cellSelector: ''
   initialIndex: 0
+  setGallerySize: true
+  resize: true
   cellAlign: 'center'
+  contain: true
+  draggable: true
+  freeScroll: true
+  wrapAround: true
+  autoPlay: 3000
+  prevNextButtons: true
+  pageDots: true
   advanced: ''

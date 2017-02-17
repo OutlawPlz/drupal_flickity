@@ -24,6 +24,33 @@ flickity.flickity.*:
         cellAlign:
           type: string
           label: 'Cell align'
+        setGallerySize:
+          type: boolean
+          label: 'Set gallery size'
+        resize:
+          type: boolean
+          label: 'Resize'
+        contain:
+          type: boolean
+          label: 'Contain'
+        draggable:
+          type: boolean
+          label: 'Draggable'
+        freeScroll:
+          type: boolean
+          label: 'Free scroll'
+        wrapAround:
+          type: boolean
+          label: 'Wrap around'
+        autoPlay:
+          type: integer
+          label: 'Auto play'
+        prevNextButtons:
+          type: boolean
+          label: 'Prev/Next buttons'
+        pageDots:
+          type: boolean
+          label: 'Page dots'
         advanced:
           type: text
           label: 'Advanced options'
