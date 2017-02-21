@@ -37,7 +37,6 @@ class FlickityForm extends EntityForm {
       '#title' => $this->t('Label'),
       '#maxlength' => EntityTypeInterface::ID_MAX_LENGTH,
       '#default_value' => $entity->get('label'),
-      '#description' => $this->t(''),
       '#required' => TRUE,
     );
 
@@ -51,6 +50,11 @@ class FlickityForm extends EntityForm {
       ),
       '#disabled' => !$entity->isNew(),
       '#description' => $this->t('')
+    );
+
+    $form['info'] = array(
+      '#type' => 'item',
+      '#description' => $this->t('To learn more abount Flickity options, check out the <a href="http://flickity.metafizzy.co/" target="_blank">official documentation</a>.')
     );
 
     $form['setup'] = array(
@@ -217,6 +221,7 @@ class FlickityForm extends EntityForm {
       'freeScroll' => $form_state->getValue('free_scroll'),
       'wrapAround' => $form_state->getValue('wrap_around'),
       'autoPlay' => $form_state->getValue('auto_play'),
+      'adaptiveHeight' => $form_state->getValue('adaptive_height'),
       'prevNextButtons' => $form_state->getValue('prev_next_buttons'),
       'pageDots' => $form_state->getValue('page_dots'),
       'advanced' => $form_state->getValue('advanced')

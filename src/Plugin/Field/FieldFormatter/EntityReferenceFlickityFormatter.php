@@ -91,22 +91,29 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
    * @return array
    *   A renderable array for a themed field with its label and all its values.
    */
-  public function viewElements(FieldItemListInterface $items, $langcode) {
+  public function view(FieldItemListInterface $items, $langcode = NULL) {
 
-    $elements = parent::viewElements($items, $langcode);
+    $elements = parent::view($items, $langcode);
     $config = $this->getSetting('flickity_config');
 
     $elements['#theme'] = 'flickity';
-    // Add Flickity data attribute.
+    // Add Flickity data attribute and attach library.
     $elements['#attributes']['data-flickity-options'] = $config;
-    // Attach library.
     $elements['#attached']['library'][] = 'flickity/flickity';
 
-    // If not set, add flickity options.
+    // If not set and config is not empty, add flickity options.
     if (!isset($elements['#attached']['drupalSettings']['flickity'][$config]) && !empty($config)) {
       /** @var Flickity $entity */
       $entity = Flickity::load($config);
       $elements['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
+
+      // Set cacheability metadata.
+      if (isset($elements['#cache']['tags'])) {
+        $elements['#cache']['tags'] = array_merge($elements['#cache']['tags'], $entity->getCacheTagsToInvalidate());
+      }
+      else {
+        $elements['#cache']['tags'] = $entity->getCacheTagsToInvalidate();
+      }
     }
 
     return $elements;

@@ -10,3 +10,6 @@ All notable changes to this project will be documented in this file.
 
 - Fixed getFormattedOptions(). Attached library to field. Implemented 
 flickityInit. Improved options form.
+
+- Cacheability metadata. Move Flickity library to libraries/ folder. Fixed 
+adaptiveHeight option.

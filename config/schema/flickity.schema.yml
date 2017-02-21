@@ -45,6 +45,9 @@ flickity.flickity.*:
         autoPlay:
           type: integer
           label: 'Auto play'
+        adaptiveHeight:
+          type: boolean
+          label: 'Adaptive height'
         prevNextButtons:
           type: boolean
           label: 'Prev/Next buttons'
