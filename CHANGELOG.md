@@ -2,16 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.1.1
+
+- Typo, README links.
+
 ## v0.1.0
 
 - Downloaded Flickity v2.0.5, added libraries.yml file. Flickity config entity.
 
 - Advanced options in Yaml format. Flickity field formatter.
 
-- Fixed getFormattedOptions(). Attached library to field. Implemented 
+- Fixed getFormattedOptions(). Attached library to field. Implemented
 flickityInit. Improved options form.
 
-- Cacheability metadata. Move Flickity library to libraries/ folder. Fixed 
+- Cacheability metadata. Move Flickity library to libraries/ folder. Fixed
 adaptiveHeight option.
 
 - Description and README. Added CSS classes.

@@ -1,4 +1,4 @@
-# Zero
+# Flickity
 
 Provides Flickity library integration for Drupal 8.
 
@@ -6,14 +6,14 @@ Provides Flickity library integration for Drupal 8.
 
 Start using Flickity in three steps.
 
-1. Download latest Flickity module form Github or via Composer and enable it as
-usual.
+1. Download latest Flickity module form [Github][20e977c5] or via Composer and
+enable it as usual.
   ```sh
   composer require outlawplz/flickity
   ```
 
-2. Download latest Flickity library and copy it to the `libraries/` folder
-found at Drupal root folder.
+2. Download latest [Flickity][3bda2aad] library and copy it to the `libraries/`
+folder found at Drupal root folder.
   ```sh
   # CSS file location
   /libraries/flickity/dist/flickity.min.css
@@ -25,6 +25,9 @@ found at Drupal root folder.
 3. In a Reference Entity field select Flickity as display mode.
 
 That's it. You're all set to start using Flickity.
+
+  [20e977c5]: https://github.com/OutlawPlz/drupal_flickity "Github Flickity"
+  [3bda2aad]: http://flickity.metafizzy.co/ "Flickity"
 
 ## Options
 
