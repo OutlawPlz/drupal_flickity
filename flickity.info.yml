@@ -1,4 +1,4 @@
 name: Flickity
 type: module
-description: 'Provides Flickity library integration for Drupal.'
+description: 'Provides Flickity library integration for Drupal 8.'
 core: 8.x
