@@ -12,4 +12,5 @@ flickity:
     /libraries/flickity/dist/flickity.pkgd.min.js: { minified: true }
     js/flickityInit.js: {}
   dependencies:
+    - core/drupal
     - core/drupalSettings

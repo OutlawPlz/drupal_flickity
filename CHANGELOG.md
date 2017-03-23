@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 - Typo, README links.
 
+- Fixed Drupal is not defined for anonymous user.
+
 ## v0.1.0
 
 - Downloaded Flickity v2.0.5, added libraries.yml file. Flickity config entity.
