@@ -6,6 +6,7 @@
 
 namespace Drupal\flickity;
 
+
 use Drupal\Core\Config\Entity\ConfigEntityListBuilder;
 use Drupal\Core\Entity\EntityInterface;
 

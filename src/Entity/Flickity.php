@@ -8,7 +8,9 @@ namespace Drupal\flickity\Entity;
 
 
 use Drupal\Component\Serialization\Yaml;
+use Drupal\Core\Annotation\Translation;
 use Drupal\Core\Config\Entity\ConfigEntityBase;
+use Drupal\Core\Entity\Annotation\ConfigEntityType;
 
 /**
  * Defines the Flickity configuration entity.

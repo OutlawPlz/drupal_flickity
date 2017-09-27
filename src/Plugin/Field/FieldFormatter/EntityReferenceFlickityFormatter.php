@@ -7,6 +7,8 @@
 namespace Drupal\flickity\Plugin\Field\FieldFormatter;
 
 
+use Drupal\Core\Annotation\Translation;
+use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
 use Drupal\Core\Form\FormStateInterface;
