@@ -96,27 +96,12 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
   public function view(FieldItemListInterface $items, $langcode = NULL) {
 
     $elements = parent::view($items, $langcode);
-    $config = $this->getSetting('flickity_config');
 
     $elements['#theme'] = 'flickity';
     // Add Flickity data attribute and attach library.
-    $elements['#attributes']['data-flickity-options'] = $config;
-    $elements['#attached']['library'][] = 'flickity/flickity';
-
-    // If not set and config is not empty, add flickity options.
-    if (!isset($elements['#attached']['drupalSettings']['flickity'][$config]) && !empty($config)) {
-      /** @var Flickity $entity */
-      $entity = Flickity::load($config);
-      $elements['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
-
-      // Set cacheability metadata.
-      if (isset($elements['#cache']['tags'])) {
-        $elements['#cache']['tags'] = array_merge($elements['#cache']['tags'], $entity->getCacheTagsToInvalidate());
-      }
-      else {
-        $elements['#cache']['tags'] = $entity->getCacheTagsToInvalidate();
-      }
-    }
+    $elements['#flickity_attributes'] = array(
+      'data-flickity-options' => $this->getSetting('flickity_config')
+    );
 
     return $elements;
   }

@@ -15,18 +15,17 @@
  * @see template_preprocess_views_view_flickity()
  */
 #}
+{%
+set row_classes = [
+    default_row_class ? 'views-row',
+]
+%}
+
 {% if title %}
     <h3>{{ title }}</h3>
 {% endif %}
-<div{{ attributes }}>
+<div{{ attributes.addClass('views-rows') }}>
     {% for row in rows %}
-        {%
-        set row_classes = [
-        default_row_class ? 'views-row',
-        ]
-        %}
-        <div{{ row.attributes.addClass(row_classes) }}>
-            {{ row.content }}
-        </div>
+        <div{{ row.attributes.addClass(row_classes) }}>{{ row.content }}</div>
     {% endfor %}
 </div>

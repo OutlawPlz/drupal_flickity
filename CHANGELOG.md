@@ -14,6 +14,12 @@ Log of unreleased changes.
 
 - Refactored `CHANGELOG.md` using *Keepachangelog.com* advices.
 
+### Fixed
+
+- **[#4][514d8947]** - Fixed layout issue when field label is printed.
+
+  [514d8947]: https://github.com/OutlawPlz/drupal_flickity/issues/4 "Layout breaks when field label is printed"
+
 ## v0.1.1
 
 Released on **2017/03/23**.

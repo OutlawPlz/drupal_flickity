@@ -6,6 +6,7 @@
 */
 
 use Drupal\Core\Template\Attribute;
+use Drupal\flickity\Entity\Flickity;
 
 /**
  * Implements hook_theme().
@@ -32,6 +33,21 @@ function template_preprocess_flickity(&$variables) {
 
   // Flickity formatter is a clone of the default field formatter.
   template_preprocess_field($variables, NULL);
+
+  $element = $variables['element'];
+  $config = $element['#flickity_attributes']['data-flickity-options'];
+
+  // Attach Flickity library and set attributes.
+  $variables['flickity_attributes'] = new Attribute($element['#flickity_attributes']);
+  $elements['#attached']['library'][] = 'flickity/flickity';
+
+  // Load Flickity options.
+  /** @var \Drupal\flickity\Entity\Flickity $entity */
+  $entity = Flickity::load($config);
+  $elements['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
+
+  // Set cacheability metadata.
+  $elements['#cache']['tags'][] = $entity->getCacheTagsToInvalidate();
 }
 
 /**
@@ -46,12 +62,11 @@ function template_preprocess_views_view_flickity(&$variables) {
 
   // Attach Flickity library and set attributes.
   $variables['#attached']['library'][] = 'flickity/flickity';
-  $variables['attributes'] = new Attribute(array(
-    'data-flickity-options' => $config
-  ));
+  $variables['attributes']['data-flickity-options'] = $config;
 
   // Load Flickity options.
-  $entity = \Drupal\flickity\Entity\Flickity::load($config);
+  /** @var \Drupal\flickity\Entity\Flickity $entity */
+  $entity = Flickity::load($config);
   $variables['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
 
   // Set cache metadata.
