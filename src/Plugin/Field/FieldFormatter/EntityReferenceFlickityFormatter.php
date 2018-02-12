@@ -95,13 +95,21 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
    */
   public function view(FieldItemListInterface $items, $langcode = NULL) {
 
+    // Let Drupal do its things.
     $elements = parent::view($items, $langcode);
-
+    $config_id = $this->getSetting('flickity_config');
+    // Set Flickity field formatter.
     $elements['#theme'] = 'flickity';
-    // Add Flickity data attribute and attach library.
-    $elements['#flickity_attributes'] = array(
-      'data-flickity-options' => $this->getSetting('flickity_config')
-    );
+    $elements['#attached']['library'][] = 'flickity/flickity';
+    $elements['#flickity_options'] = $config_id;
+
+    if (empty($config_id)) {
+      return $elements;
+    }
+
+    $entity = Flickity::load($config_id);
+    $elements['#attached']['drupalSettings']['flickity'][$config_id] = $entity->getFormattedOptions();
+    $elements['#cache']['tags'][] = $entity->getCacheTagsToInvalidate();
 
     return $elements;
   }

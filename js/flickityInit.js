@@ -1,24 +1,19 @@
-( function ( Drupal ) {
-
+(function (Drupal) {
   Drupal.behaviors.flickity = {
-    attach: function ( context, settings ) {
-
-      var elements = context.querySelectorAll( '[data-flickity-options]' ),
-          options;
-
-      for ( var i = elements.length, element; i--, element = elements[ i ]; ) {
-
-        var config = element.getAttribute( 'data-flickity-options' );
-
-        if ( config ) {
-          options = settings[ 'flickity' ][ config ];
-          new Flickity( element, options);
+    attach: function (context, settings) {
+      var elements = context.querySelectorAll('[data-flickity-options]')
+      var options_id
+      // For each element instantiate a new Flickity object.
+      for (var i = elements.length, element; (element = elements[ --i ]);) {
+        options_id = element.getAttribute('data-flickity-options')
+        // If options_id is empty instantiate without options.
+        if (!options_id) {
+          new Flickity (element)
+          continue
         }
-        else {
-          new Flickity( element );
-        }
+        // Otherwise get the options from drupalSettins and instantiate Flickity.
+        new Flickity (element, settings['flickity'][options_id])
       }
     }
-  };
-
-} ( Drupal ) );
+  }
+}(Drupal))

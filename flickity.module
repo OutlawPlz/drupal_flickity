@@ -33,21 +33,9 @@ function template_preprocess_flickity(&$variables) {
 
   // Flickity formatter is a clone of the default field formatter.
   template_preprocess_field($variables, NULL);
-
+  // Set Flickity attribute.
   $element = $variables['element'];
-  $config = $element['#flickity_attributes']['data-flickity-options'];
-
-  // Attach Flickity library and set attributes.
-  $variables['flickity_attributes'] = new Attribute($element['#flickity_attributes']);
-  $variables['#attached']['library'][] = 'flickity/flickity';
-
-  // Load Flickity options.
-  /** @var \Drupal\flickity\Entity\Flickity $entity */
-  $entity = Flickity::load($config);
-  $variables['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
-
-  // Set cache metadata.
-  $variables['#cache']['tags'][] = $entity->getCacheTagsToInvalidate();
+  $variables['content_attributes']['data-flickity-options'] = $element['#flickity_options'];
 }
 
 /**

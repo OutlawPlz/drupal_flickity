@@ -13,12 +13,15 @@ Log of unreleased changes.
 ### Changed
 
 - Refactored `CHANGELOG.md` using *Keepachangelog.com* advices.
+- [#2](https://github.com/OutlawPlz/drupal_flickity/issues/2) - Logic is inside
+the `view()` function, while `template_preprocess_flickity()` adds
+`data-flickity-options` attribute.
+- Refactoring `flickityInit.js`.
 
 ### Fixed
 
-- **[#4][514d8947]** - Fixed layout issue when field label is printed.
-
-  [514d8947]: https://github.com/OutlawPlz/drupal_flickity/issues/4 "Layout breaks when field label is printed"
+- [#4](https://github.com/OutlawPlz/drupal_flickity/issues/4) - Fixed layout
+issue when field label is printed.
 
 ## v0.1.1
 
