@@ -9,6 +9,9 @@ Log of unreleased changes.
 ### Added
 
 - Added Flickity Views style, it renders Views rows in a Flickity carousel.
+- [#6](https://github.com/OutlawPlz/drupal_flickity/issues/6) - User can override
+Flickity's options defined in field formatter by adding a reference field called
+`field_flickity_options`.
 
 ### Changed
 

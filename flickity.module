@@ -5,7 +5,7 @@
 * Provides Flickity library integration for Drupal.
 */
 
-use Drupal\Core\Template\Attribute;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\flickity\Entity\Flickity;
 
 /**
@@ -36,6 +36,29 @@ function template_preprocess_flickity(&$variables) {
   // Set Flickity attribute.
   $element = $variables['element'];
   $variables['content_attributes']['data-flickity-options'] = $element['#flickity_options'];
+
+  /*
+   * If the current entity has a field called field_flickity_options and the
+   * field is not empty, override the Flickity options defined in field
+   * formatter with the one provided by the field.
+   */
+  /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
+  $entity = $element['#object'];
+  $field_name = 'field_flickity_options';
+  // If the entity is not an instance of FieldableEntityInterface or has not
+  // the given field, do nothing.
+  if (!$entity instanceof FieldableEntityInterface || !$entity->hasField($field_name)) {
+    return;
+  }
+  $config_id = $entity->get($field_name)->getValue()[0]['target_id'];
+  // If the field is empty, do nothing.
+  if (empty($config_id)) {
+    return;
+  }
+  $flickity_config = Flickity::load($config_id);
+  $variables['content_attributes']['data-flickity-options'] = $config_id;
+  $element['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getFormattedOptions();
+  $elements['#cache']['tags'][] = $flickity_config->getCacheTagsToInvalidate();
 }
 
 /**
