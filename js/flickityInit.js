@@ -1,4 +1,5 @@
 (function (Drupal) {
+  'use strict'
   Drupal.behaviors.flickity = {
     attach: function (context, settings) {
       var elements = context.querySelectorAll('[data-flickity-options]')

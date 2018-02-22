@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## v0.2.1
+
+Released on **2018/02/22**.
+
+### Fixed
+
+- [#8](https://github.com/OutlawPlz/drupal_flickity/issues/8) - Flickity's
+options are not set correctly and Flickity is initialize with default options.
+
 ## v0.2.0
 
 Released on **2018/02/15**.

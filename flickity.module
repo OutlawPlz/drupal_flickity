@@ -34,16 +34,14 @@ function template_preprocess_flickity(&$variables) {
   // Flickity formatter is a clone of the default field formatter.
   template_preprocess_field($variables, NULL);
   // Set Flickity attribute.
-  $element = $variables['element'];
-  $variables['content_attributes']['data-flickity-options'] = $element['#flickity_options'];
-
+  $variables['content_attributes']['data-flickity-options'] = $variables['element']['#flickity_options'];
   /*
    * If the current entity has a field called field_flickity_options and the
    * field is not empty, override the Flickity options defined in field
    * formatter with the one provided by the field.
    */
   /** @var \Drupal\Core\Entity\FieldableEntityInterface $entity */
-  $entity = $element['#object'];
+  $entity = $variables['element']['#object'];
   $field_name = 'field_flickity_options';
   // If the entity is not an instance of FieldableEntityInterface or has not
   // the given field, do nothing.
@@ -57,8 +55,8 @@ function template_preprocess_flickity(&$variables) {
   }
   $flickity_config = Flickity::load($config_id);
   $variables['content_attributes']['data-flickity-options'] = $config_id;
-  $element['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getFormattedOptions();
-  $elements['#cache']['tags'][] = $flickity_config->getCacheTagsToInvalidate();
+  $variables['element']['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getFormattedOptions();
+  $variables['element']['#cache']['tags'][] = $flickity_config->getCacheTagsToInvalidate();
 }
 
 /**
