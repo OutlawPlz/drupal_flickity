@@ -6,8 +6,9 @@
 
 namespace Drupal\flickity\Plugin\Field\FieldFormatter;
 
-
 use Drupal\Core\Annotation\Translation;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
@@ -46,7 +47,7 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
   public function settingsForm(array $form, FormStateInterface $form_state) {
 
     $form = parent::settingsForm($form, $form_state);
-
+    // Create the flickity_config option form.
     $form['flickity_config'] = array(
       '#title' => $this->t('Flickity configuration'),
       '#type' => 'select',
@@ -70,11 +71,11 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
   public function settingsSummary() {
 
     $config = $this->getSetting('flickity_config');
-
+    // If $config is empty, set the default.
     if (empty($config)) {
       $config = $this->t('None (library default)');
     }
-
+    // Add current configuration to the $summary array.
     $summary = parent::settingsSummary();
     $summary[] = $this->t('Flickity config: ' . $config);
 
@@ -95,21 +96,28 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
    */
   public function view(FieldItemListInterface $items, $langcode = NULL) {
 
-    // Let Drupal do its things.
-    $elements = parent::view($items, $langcode);
+    $elements = parent::view($items, $langcode); // Let Drupal do its things.
     $config_id = $this->getSetting('flickity_config');
+    $entity = $elements['#object'];
+    $field_name = 'field_flickity_options';
+    // Override $config_id if the $entity has the field_flickity_options field.
+    /** @var FieldableEntityInterface $entity */
+    if ($entity instanceof FieldableEntityInterface && $entity->hasField($field_name)) {
+      $field_value = $entity->get('field_flickity_options')->getValue()[0]['target_id'];
+      $config_id = (empty($field_value) ? $config_id : $field_value);
+    }
     // Set Flickity field formatter.
     $elements['#theme'] = 'flickity';
     $elements['#attached']['library'][] = 'flickity/flickity';
     $elements['#flickity_options'] = $config_id;
-
+    // If $config_id is empty, we're done.
     if (empty($config_id)) {
       return $elements;
     }
-
-    $entity = Flickity::load($config_id);
-    $elements['#attached']['drupalSettings']['flickity'][$config_id] = $entity->getFormattedOptions();
-    $elements['#cache']['tags'][] = $entity->getCacheTagsToInvalidate();
+    // Otherwise load the Flickity's options and set them into drupalSettings.
+    $flickity_config = Flickity::load($config_id);
+    $elements['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getFormattedOptions();
+    $elements['#cache']['tags'] = Cache::mergeTags($elements['#cache']['tags'], $flickity_config->getCacheTagsToInvalidate());
 
     return $elements;
   }
