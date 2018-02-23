@@ -6,9 +6,16 @@ All notable changes to this project will be documented in this file.
 
 Log of unreleased changes.
 
+### Changed
+
+- [#10](https://github.com/OutlawPlz/drupal_flickity/issues/10) - Moved
+`setGallerySize` in `advanced` options.
+
 ### Fixed
 
 - Fixed typo in `flickity.routing.yml` and `flickity.install`.
+- Fixed an erroneous requirements check. The `$phase` variable were not checked 
+correctly.
 
 ## v0.2.1
 

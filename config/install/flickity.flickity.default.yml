@@ -6,7 +6,6 @@ label: Default
 options:
   cellSelector: ''
   initialIndex: 0
-  setGallerySize: true
   resize: true
   cellAlign: 'center'
   contain: true

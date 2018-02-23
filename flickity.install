@@ -9,6 +9,11 @@
  */
 function flickity_requirements($phase) {
 
+  // Check only on runtime.
+  if ($phase !== 'runtime') {
+    return;
+  }
+  // Set default message.
   $requirements = array(
     'flickity' => array(
       'title' => t('Flickity'),
@@ -20,8 +25,8 @@ function flickity_requirements($phase) {
   $flickity_js = 'libraries/flickity/dist/flickity.pkgd.min.js';
   $flickity_css = 'libraries/flickity/dist/flickity.min.css';
   $package_json = 'libraries/flickity/package.json';
-  // If is runtime and files exists, Flickity library is installed correctly.
-  if ($phase === 'runtime' && file_exists($flickity_js) && file_exists($flickity_css)) {
+  // If files exist, Flickity library is installed correctly.
+  if (file_exists($flickity_js) && file_exists($flickity_css)) {
     $requirements['flickity']['severity'] = REQUIREMENT_OK;
     $requirements['flickity']['value'] = t('Installed');
     unset($requirements['flickity']['description']);

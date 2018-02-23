@@ -6,7 +6,6 @@
 
 namespace Drupal\flickity\Form;
 
-
 use Drupal\Core\Entity\EntityForm;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Form\FormStateInterface;
@@ -77,13 +76,6 @@ class FlickityForm extends EntityForm {
       '#default_value' => $options['initialIndex'],
       '#min' => 0,
       '#description' => $this->t('Zero-based index of the initial selected cell.')
-    );
-
-    $form['setup']['set_gallery_size'] = array(
-      '#type' => 'checkbox',
-      '#title' => $this->t('Set gallery size'),
-      '#default_value' => $options['setGallerySize'],
-      '#description' => $this->t('Sets the height of the carousel to the height of the tallest cell. Set to false if you prefer to size the carousel with CSS, rather than using the size of cells.'),
     );
 
     $form['setup']['resize'] = array(
@@ -216,7 +208,6 @@ class FlickityForm extends EntityForm {
       'initialIndex' => $form_state->getValue('initial_index'),
       'cellAlign' => $form_state->getValue('cell_align'),
       'resize' => $form_state->getValue('resize'),
-      'setGallerySize' => $form_state->getValue('set_gallery_size'),
       'contain' => $form_state->getValue('contain'),
       'draggable' => $form_state->getValue('draggable'),
       'freeScroll' => $form_state->getValue('free_scroll'),

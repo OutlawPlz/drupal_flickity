@@ -24,9 +24,6 @@ flickity.flickity.*:
         cellAlign:
           type: string
           label: 'Cell align'
-        setGallerySize:
-          type: boolean
-          label: 'Set gallery size'
         resize:
           type: boolean
           label: 'Resize'
