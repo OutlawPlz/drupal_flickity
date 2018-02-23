@@ -17,19 +17,16 @@ function flickity_requirements($phase) {
       'description' => t('The Flickity library was not found in the <em>library/</em> directory. Files <em>flickity.pkgd.min.js</em> and <em>flickity.min.css</em> should be located at <em>libraries/flickity/dist/</em>.')
     )
   );
-
   $flickity_js = 'libraries/flickity/dist/flickity.pkgd.min.js';
   $flickity_css = 'libraries/flickity/dist/flickity.min.css';
   $package_json = 'libraries/flickity/package.json';
-
-  // If in runtime and files exists, Droppy library is installed correctly.
+  // If is runtime and files exists, Flickity library is installed correctly.
   if ($phase === 'runtime' && file_exists($flickity_js) && file_exists($flickity_css)) {
     $requirements['flickity']['severity'] = REQUIREMENT_OK;
     $requirements['flickity']['value'] = t('Installed');
     unset($requirements['flickity']['description']);
   }
-
-  // if package.json exists, calculate library version.
+  // If package.json exists, calculate library version.
   if (file_exists($package_json)) {
     $info = json_decode(file_get_contents($package_json), TRUE);
     $requirements['flickity']['value'] = $info['version'];

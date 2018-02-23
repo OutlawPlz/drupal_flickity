@@ -22,7 +22,6 @@
  * - field_type: The type of the field.
  * - label_display: The display settings for the label.
  *
- *
  * @see template_preprocess_flickity()
  */
 #}
@@ -40,7 +39,6 @@ set title_classes = [
   label_display == 'visually_hidden' ? 'visually-hidden',
 ]
 %}
-
 <div{{ attributes.addClass(classes) }}>
   {% if not label_hidden %}
     <div{{ title_attributes.addClass(title_classes) }}>{{ label }}</div>

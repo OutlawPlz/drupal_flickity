@@ -103,7 +103,7 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
     // Override $config_id if the $entity has the field_flickity_options field.
     /** @var FieldableEntityInterface $entity */
     if ($entity instanceof FieldableEntityInterface && $entity->hasField($field_name)) {
-      $field_value = $entity->get('field_flickity_options')->getValue()[0]['target_id'];
+      $field_value = $entity->get($field_name)->getValue()[0]['target_id'];
       $config_id = (empty($field_value) ? $config_id : $field_value);
     }
     // Set Flickity field formatter.

@@ -42,7 +42,7 @@ entity.flickity.collection:
   path: '/admin/config/user-interface/flickity'
   defaults:
     _entity_list: 'flickity'
-    _title: 'Droppy configurations'
+    _title: 'Flickity configurations'
   options:
     _admin_route: TRUE
   requirements:

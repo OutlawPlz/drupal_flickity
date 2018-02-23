@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## Unreleased
+
+Log of unreleased changes.
+
+### Fixed
+
+- Fixed typo in `flickity.routing.yml` and `flickity.install`.
+
 ## v0.2.1
 
 Released on **2018/02/22**.
