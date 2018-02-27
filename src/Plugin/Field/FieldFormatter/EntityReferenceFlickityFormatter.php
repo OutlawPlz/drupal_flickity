@@ -116,7 +116,7 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
     }
     // Otherwise load the Flickity's options and set them into drupalSettings.
     $flickity_config = Flickity::load($config_id);
-    $elements['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getFormattedOptions();
+    $elements['#attached']['drupalSettings']['flickity'][$config_id] = $flickity_config->getOptions();
     $elements['#cache']['tags'] = Cache::mergeTags($elements['#cache']['tags'], $flickity_config->getCacheTagsToInvalidate());
 
     return $elements;

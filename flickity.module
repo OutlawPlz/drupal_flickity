@@ -44,18 +44,14 @@ function template_preprocess_views_view_flickity(&$variables) {
 
   // Flickity views style is a clone of the default unformatted view style.
   template_preprocess_views_view_unformatted($variables);
-
   $config = $variables['view']->style_plugin->options['flickity_config'];
-
   // Attach Flickity library and set attributes.
   $variables['#attached']['library'][] = 'flickity/flickity';
   $variables['attributes']['data-flickity-options'] = $config;
-
   // Load Flickity options.
   /** @var \Drupal\flickity\Entity\Flickity $entity */
   $entity = Flickity::load($config);
-  $variables['#attached']['drupalSettings']['flickity'][$config] = $entity->getFormattedOptions();
-
+  $variables['#attached']['drupalSettings']['flickity'][$config] = $entity->getOptions();
   // Set cache metadata.
   $variables['#cache']['tags'][] = $entity->getCacheTagsToInvalidate();
 }

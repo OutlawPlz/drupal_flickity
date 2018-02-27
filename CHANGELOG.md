@@ -6,16 +6,26 @@ All notable changes to this project will be documented in this file.
 
 Log of unreleased changes.
 
+_This release breaks compatibility with previous releases. Since we're in early
+development, no upgrade path is provided._
+
 ### Changed
 
 - [#10](https://github.com/OutlawPlz/drupal_flickity/issues/10) - Moved
 `setGallerySize` in `advanced` options.
+- The `options` are saved in database as plain text, formatted via Yaml. This
+way future changes in Flickity options will be handled faster and easier.
 
 ### Fixed
 
 - Fixed typo in `flickity.routing.yml` and `flickity.install`.
-- Fixed an erroneous requirements check. The `$phase` variable were not checked 
+- Fixed an erroneous requirements check. The `$phase` variable were not checked
 correctly.
+
+### Removed
+
+- [#7](https://github.com/OutlawPlz/drupal_flickity/issues/7) - Removed
+`getFormattedOptions()`, use `getOptions()`.
 
 ## v0.2.1
 
@@ -33,13 +43,13 @@ Released on **2018/02/15**.
 ### Added
 
 - Added Flickity Views style, it renders Views rows in a Flickity carousel.
-- [#6](https://github.com/OutlawPlz/drupal_flickity/issues/6) - User can override
-Flickity's options defined in field formatter by adding a reference field called
-`field_flickity_options`.
+- [#6](https://github.com/OutlawPlz/drupal_flickity/issues/6) - User can
+override Flickity's options defined in field formatter by adding a reference
+field called `field_flickity_options`.
 
 ### Changed
 
-- Refactored `CHANGELOG.md` using *Keepachangelog.com* advices.
+- Refactored `CHANGELOG.md` using _Keepachangelog.com_ advices.
 - [#2](https://github.com/OutlawPlz/drupal_flickity/issues/2) - Logic is inside
 the `view()` function, while `template_preprocess_flickity()` adds
 `data-flickity-options` attribute.

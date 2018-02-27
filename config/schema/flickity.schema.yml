@@ -1,6 +1,6 @@
 flickity.flickity.*:
   type: config_entity
-  label: 'Flickity configuration'
+  label: 'Flickity'
   mapping:
     id:
       type: string
@@ -12,45 +12,5 @@ flickity.flickity.*:
       type: string
       label: 'UUID'
     options:
-      type: mapping
+      type: text
       label: 'Options'
-      mapping:
-        cellSelector:
-          type: string
-          label: 'Cell selector'
-        initialIndex:
-          type: integer
-          label: 'Initial index'
-        cellAlign:
-          type: string
-          label: 'Cell align'
-        resize:
-          type: boolean
-          label: 'Resize'
-        contain:
-          type: boolean
-          label: 'Contain'
-        draggable:
-          type: boolean
-          label: 'Draggable'
-        freeScroll:
-          type: boolean
-          label: 'Free scroll'
-        wrapAround:
-          type: boolean
-          label: 'Wrap around'
-        autoPlay:
-          type: integer
-          label: 'Auto play'
-        adaptiveHeight:
-          type: boolean
-          label: 'Adaptive height'
-        prevNextButtons:
-          type: boolean
-          label: 'Prev/Next buttons'
-        pageDots:
-          type: boolean
-          label: 'Page dots'
-        advanced:
-          type: text
-          label: 'Advanced options'

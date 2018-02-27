@@ -6,7 +6,6 @@
 
 namespace Drupal\flickity\Entity;
 
-
 use Drupal\Component\Serialization\Yaml;
 use Drupal\Core\Annotation\Translation;
 use Drupal\Core\Config\Entity\ConfigEntityBase;
@@ -17,7 +16,7 @@ use Drupal\Core\Entity\Annotation\ConfigEntityType;
  *
  * @ConfigEntityType(
  *   id = "flickity",
- *   label = @Translation("Flickity configuration"),
+ *   label = @Translation("Flickity"),
  *   handlers = {
  *     "list_builder" = "Drupal\flickity\FlickityListBuilder",
  *     "form" = {
@@ -74,25 +73,7 @@ class Flickity extends ConfigEntityBase implements FlickityInterface {
    */
   public function getOptions() {
 
-    return $this->options;
-  }
-
-  /**
-   * Gets the options formatted as Flickity options.
-   *
-   * @return array
-   *   The options array ready to use as Flickity options.
-   */
-  public function getFormattedOptions() {
-
-    $options = $this->options;
-
-    if(!empty($options['advanced'])) {
-      $options = array_merge($options, Yaml::decode($options['advanced']));
-      unset($options['advanced']);
-    }
-
-    return $options;
+    return Yaml::decode($this->options);
   }
 
   /**
