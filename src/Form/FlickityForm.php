@@ -158,7 +158,7 @@ class FlickityForm extends EntityForm {
         '#title' => $this->t('User interface'),
         '#open' => TRUE,
         // Prev & Next Button
-        'prev_next_button' => array(
+        'prev_next_buttons' => array(
           '#type' => 'checkbox',
           '#title' => $this->t('Prev/Next buttons'),
           '#default_value' => $options['prevNextButtons'],

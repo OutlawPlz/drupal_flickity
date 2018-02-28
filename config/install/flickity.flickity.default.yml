@@ -3,17 +3,4 @@ status: true
 dependencies: {  }
 id: default
 label: Default
-options:
-  cellSelector: ''
-  initialIndex: 0
-  resize: true
-  cellAlign: 'center'
-  contain: true
-  draggable: true
-  freeScroll: true
-  wrapAround: true
-  autoPlay: 3000
-  adaptiveHeight: false
-  prevNextButtons: true
-  pageDots: true
-  advanced: ''
+options: "cellSelector: ''\ninitialIndex: ''\ncellAlign: center\nresize: 1\ncontain: 1\ndraggable: 1\nfreeScroll: 0\nwrapAround: 0\nautoPlay: '5000'\nadaptiveHeight: 0\nprevNextButtons: 1\npageDots: 1\n"
