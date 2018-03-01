@@ -9,12 +9,18 @@ Log of unreleased changes.
 _This release breaks compatibility with previous releases. Since we're in early
 development, no upgrade path is provided._
 
+### Added
+
+- [#9](https://github.com/OutlawPlz/drupal_flickity/issues/9) - Support for
+image field, added `ImageFlickityFormatter`.
+
 ### Changed
 
 - [#10](https://github.com/OutlawPlz/drupal_flickity/issues/10) - Moved
 `setGallerySize` in `advanced` options.
 - The `options` are saved in database as plain text, formatted via Yaml. This
 way future changes in Flickity options will be handled faster and easier.
+- Changed `flickity.flickity.default.yml` to match new `options` format.
 
 ### Fixed
 

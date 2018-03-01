@@ -1,8 +1,4 @@
 <?php
-/**
- * @file
- * Contains \Drupal\flickity\Plugin\Field\FieldFormatter\EntityReferenceFlickityFormatter
- */
 
 namespace Drupal\flickity\Plugin\Field\FieldFormatter;
 
@@ -11,41 +7,29 @@ use Drupal\Core\Cache\Cache;
 use Drupal\Core\Entity\FieldableEntityInterface;
 use Drupal\Core\Field\Annotation\FieldFormatter;
 use Drupal\Core\Field\FieldItemListInterface;
-use Drupal\Core\Field\Plugin\Field\FieldFormatter\EntityReferenceEntityFormatter;
+use Drupal\image\Plugin\Field\FieldFormatter\ImageFormatter;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\flickity\Entity\Flickity;
 
 /**
- * Plugin implementation of the Entity Reference Flickity formatter.
+ * Plugin implementation of the Image Flickity formatter.
  *
  * @FieldFormatter(
- *   id = "entity_reference_flickity",
+ *   id = "image_flickity",
  *   label = @Translation("Flickity"),
- *   description = @Translation("Display the referenced entities in a Flickity carousel."),
+ *   description = @Translation("Display the images in a Flickity carousel."),
  *   field_types = {
- *     "entity_reference"
+ *     "image"
  *   }
  * )
  */
-class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
-
+class ImageFlickityFormatter extends ImageFormatter
+{
   /**
-   * Returns a form to configure settings for the formatter.
-   *
-   * Invoked from \Drupal\field_ui\Form\EntityDisplayFormBase to allow
-   * administrators to configure the formatter. The field_ui module takes care
-   * of handling submitted form values.
-   *
-   * @param array $form
-   *   The form where the settings form is being included in.
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *   The current state of the form.
-   *
-   * @return array
-   *   The form elements for the formatter settings.
+   * {@inheritdoc}
    */
-  public function settingsForm(array $form, FormStateInterface $form_state) {
-
+  public function settingsForm(array $form, FormStateInterface $form_state)
+  {
     $form = parent::settingsForm($form, $form_state);
     // Create the flickity_config option form.
     $form['flickity_config'] = array(
@@ -60,42 +44,27 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
   }
 
   /**
-   * Returns a short summary for the current formatter settings.
-   *
-   * If an empty result is returned, a UI can still be provided to display
-   * a settings form in case the formatter has configurable settings.
-   *
-   * @return string[]
-   *   A short summary of the formatter settings.
+   * {@inheritdoc}
    */
-  public function settingsSummary() {
-
+  public function settingsSummary()
+  {
     $config = $this->getSetting('flickity_config');
-    // If $config is empty, set the default.
+    // If $config is empty, set default options.
     if (empty($config)) {
       $config = $this->t('None (library default)');
     }
-    // Add current configuration to the $summary array.
+    // Add current configuration on the $summary array.
     $summary = parent::settingsSummary();
-    $summary[] = $this->t('Flickity ' . $config . ' options');
+    $summary[] = $this->t('Using Flickity ' . $config . ' options.');
 
     return $summary;
   }
 
   /**
-   * Builds a renderable array for a fully themed field.
-   *
-   * @param \Drupal\Core\Field\FieldItemListInterface $items
-   *   The field values to be rendered.
-   * @param string $langcode
-   *   (optional) The language that should be used to render the field. Defaults
-   *   to the current content language.
-   *
-   * @return array
-   *   A renderable array for a themed field with its label and all its values.
+   * {@inheritdoc}
    */
-  public function view(FieldItemListInterface $items, $langcode = NULL) {
-
+  public function view(FieldItemListInterface $items, $langcode = NULL)
+  {
     $elements = parent::view($items, $langcode); // Let Drupal do its things.
     $config_id = $this->getSetting('flickity_config');
     $entity = $elements['#object'];
@@ -123,13 +92,10 @@ class EntityReferenceFlickityFormatter extends EntityReferenceEntityFormatter {
   }
 
   /**
-   * Defines the default settings for this plugin.
-   *
-   * @return array
-   *   A list of default settings, keyed by the setting name.
+   * {@inheritdoc}
    */
-  public static function defaultSettings() {
-
+  public static function defaultSettings()
+  {
     return array(
       'flickity_config' => NULL
     ) + parent::defaultSettings();
