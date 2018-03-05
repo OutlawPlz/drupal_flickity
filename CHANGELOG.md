@@ -2,9 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
-## Unreleased
+## v0.3.0
 
-Log of unreleased changes.
+Released on **2018/03/05**.
 
 _This release breaks compatibility with previous releases. Since we're in early
 development, no upgrade path is provided._
